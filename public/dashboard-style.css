@@ -1,0 +1,381 @@
+/* Custom properties for a modern, sleek design */
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --primary-light: #e0efff;
+    --secondary-color: #6c757d;
+    --background-color-light: #f4f7f6;
+    --card-background-light: #ffffff;
+    --text-color-light: #333333;
+    --secondary-text-color-light: #666666;
+    --border-color-light: #e0e0e0;
+    --shadow-color-light: rgba(0, 0, 0, 0.08);
+
+    /* Gradients and special effects */
+    --gradient-start: #f6f9fc;
+    --gradient-end: #e2e8f0;
+}
+
+/* Dark mode colors for a premium feel */
+.dark-mode {
+    --primary-color: #5d9cec;
+    --primary-hover: #3a82e1;
+    --primary-light: #2c3a50;
+    --secondary-color: #b0b0b0;
+    --background-color-light: #121212;
+    --card-background-light: #1e1e1e;
+    --text-color-light: #e0e0e0;
+    --secondary-text-color-light: #b0b0b0;
+    --border-color-light: #333333;
+    --shadow-color-light: rgba(255, 255, 255, 0.08);
+
+    /* Gradients and special effects for dark mode */
+    --gradient-start: #1e1e1e;
+    --gradient-end: #121212;
+}
+
+/* --- Base Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    color: var(--text-color-light);
+    direction: rtl;
+    text-align: right;
+    transition: background 0.5s ease, color 0.5s ease;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- Header --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: var(--card-background-light);
+    border-bottom: 1px solid var(--border-color-light);
+    box-shadow: 0 4px 10px var(--shadow-color-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 15px;
+    box-shadow: 0 0 5px var(--shadow-color-light);
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.student-name {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--secondary-text-color-light);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: var(--text-color-light);
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.btn-icon:hover {
+    color: var(--primary-color);
+}
+
+/* --- Main Content and Layout --- */
+.main-content {
+    padding: 30px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Welcome Section --- */
+.welcome-section {
+    margin-bottom: 40px;
+}
+
+.welcome-card {
+    background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+    color: white;
+    padding: 40px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px var(--shadow-color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.dark-mode .welcome-card {
+    background: linear-gradient(45deg, #1f2a3f, #3a4b63);
+    color: var(--text-color-light);
+}
+
+.welcome-info h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.welcome-info p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.welcome-image {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    margin-right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    color: white;
+}
+.dark-mode .welcome-image {
+    color: var(--primary-color);
+}
+
+/* --- Stats Section --- */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background-color: var(--card-background-light);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-color-light);
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color-light);
+}
+
+.stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px var(--shadow-color-light);
+}
+
+.stat-icon {
+    font-size: 48px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.stat-number {
+    font-size: 2.8em;
+    font-weight: bold;
+    color: var(--text-color-light);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 1em;
+    color: var(--secondary-text-color-light);
+}
+
+/* --- Courses Sections --- */
+.dashboard-section {
+    margin-bottom: 40px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.section-icon {
+    font-size: 28px;
+    color: var(--primary-color);
+    margin-left: 15px;
+}
+
+.section-header h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color-light);
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.course-card {
+    background-color: var(--card-background-light);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px var(--shadow-color-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color-light);
+}
+
+.course-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 8px 25px var(--shadow-color-light);
+}
+
+.course-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.course-info {
+    padding: 20px;
+    text-align: right;
+}
+
+.course-info h4 {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+.course-info p {
+    font-size: 0.9em;
+    color: var(--secondary-text-color-light);
+    margin-bottom: 15px;
+}
+
+.course-price {
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+}
+
+.empty-state-message {
+    text-align: center;
+    padding: 40px;
+    border: 2px dashed var(--border-color-light);
+    border-radius: 12px;
+    color: var(--secondary-text-color-light);
+    font-size: 1.1em;
+    margin: 20px auto;
+    max-width: 600px;
+    grid-column: 1 / -1; /* spans across all columns */
+}
+
+.empty-state-message i {
+    font-size: 50px;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+/* --- Footer --- */
+.main-footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--border-color-light);
+    background-color: var(--card-background-light);
+    color: var(--secondary-text-color-light);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 20px;
+    }
+
+    .main-nav {
+        margin: 10px 0;
+        justify-content: center;
+    }
+
+    .header-actions {
+        margin-top: 10px;
+    }
+
+    .logo-text {
+        font-size: 20px;
+    }
+
+    .student-name {
+        font-size: 16px;
+    }
+
+    .main-content {
+        padding: 15px;
+    }
+
+    .welcome-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .welcome-image {
+        margin-right: 0;
+        margin-top: 20px;
+    }
+}

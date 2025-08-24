@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب جديد - مدرستي</title>
+    <link rel="stylesheet" href="signup-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <div class="background-animation">
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+    <header class="main-header">
+        <div class="header-logo-container">
+            <img src="لوجو المنصه.png" alt="شعار منصة مدرستي" class="logo">
+            <span class="logo-text">مدرستي</span>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html#about"><i class="fas fa-info-circle nav-icon"></i> عن المنصة</a>
+            <a href="index.html#courses"><i class="fas fa-book-open nav-icon"></i> الدورات</a>
+            <a href="index.html#stats"><i class="fas fa-chart-bar nav-icon"></i> إحصائيات</a>
+        </nav>
+        <div class="header-actions">
+            <button id="theme-toggle" class="btn-icon"><i class="fas fa-moon"></i></button>
+            <a href="loginn.html" class="btn btn-secondary">تسجيل الدخول</a>
+            <a href="signup.html" class="btn btn-primary">إنشاء حساب</a>
+        </div>
+    </header>
+
+    <main class="main-content form-page">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>إنشاء حساب جديد</h2>
+                <p>املأ البيانات التالية لإنشاء حسابك</p>
+            </div>
+            <form id="signup-form" class="signup-form">
+                <div class="input-group">
+                    <label for="username"><i class="fas fa-user icon"></i> اسم المستخدم</label>
+                    <input type="text" id="username" name="username" placeholder="أدخل اسم المستخدم" required>
+                </div>
+                <div class="input-group">
+                    <label for="student-phone"><i class="fas fa-mobile-alt icon"></i> رقم هاتف الطالب</label>
+                    <input type="tel" id="student-phone" name="student-phone" placeholder="أدخل رقم هاتف الطالب" required>
+                </div>
+                <div class="input-group">
+                    <label for="parent-phone"><i class="fas fa-phone-alt icon"></i> رقم هاتف ولي الأمر</label>
+                    <input type="tel" id="parent-phone" name="parent-phone" placeholder="أدخل رقم هاتف ولي الأمر">
+                </div>
+                <div class="input-group">
+                    <label for="governorate"><i class="fas fa-map-marker-alt icon"></i> المحافظة</label>
+                    <input type="text" id="governorate" name="governorate" placeholder="أدخل اسم المحافظة">
+                </div>
+                <div class="input-group">
+                    <label for="grade-level"><i class="fas fa-graduation-cap icon"></i> المرحلة الدراسية</label>
+                    <input type="text" id="grade-level" name="grade-level" placeholder="مثال: الثانوية العامة">
+                </div>
+                <div class="input-group">
+                    <label for="password"><i class="fas fa-lock icon"></i> كلمة المرور</label>
+                    <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password"><i class="fas fa-lock icon"></i> تأكيد كلمة المرور</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="أعد إدخال كلمة المرور" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full-width">إنشاء حساب</button>
+            </form>
+            <div class="form-footer">
+                <p>هل لديك حساب بالفعل؟ <a href="loginn.html" class="link-text">تسجيل الدخول</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 مدرستي. جميع الحقوق محفوظة.</p>
+    </footer>
+    
+    <script src="signup-script.js"></script>
+    <script src="theme.js"></script>
+</body>
+</html>

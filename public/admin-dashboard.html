@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم الإدارة</title>
+    <link rel="stylesheet" href="admin-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <header class="main-header">
+        <div class="header-logo-container">
+            <img src="logo-platform.png" alt="شعار منصة مدرستي" class="logo">
+            <span class="logo-text">مدرستي</span>
+        </div>
+        <nav class="main-nav">
+            <span class="admin-name">مرحباً بك، <span id="admin-username">المدير</span></span>
+        </nav>
+        <div class="header-actions">
+            <button id="theme-toggle" class="btn-icon"><i class="fas fa-moon"></i></button>
+            <button id="logout-btn" class="btn btn-primary">تسجيل الخروج</button>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-section="dashboard-overview">
+                    <i class="fas fa-chart-line menu-icon"></i>
+                    <span>لوحة التحكم الرئيسية</span>
+                </li>
+                <li class="menu-item" data-section="manage-courses">
+                    <i class="fas fa-book-open menu-icon"></i>
+                    <span>إدارة الدورات</span>
+                </li>
+                <li class="menu-item" data-section="manage-students">
+                    <i class="fas fa-users menu-icon"></i>
+                    <span>إدارة الطلاب</span>
+                </li>
+                <li class="menu-item" data-section="add-student">
+                    <i class="fas fa-user-plus menu-icon"></i>
+                    <span>إضافة حساب جديد</span>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="main-content-area">
+            
+            <section class="dashboard-section active" id="dashboard-overview">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar card-icon"></i>
+                        <h3>نظرة عامة</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="overview-item">
+                            <span class="overview-number" id="total-students">0</span>
+                            <span class="overview-label">إجمالي الطلاب</span>
+                        </div>
+                        <div class="overview-item">
+                            <span class="overview-number" id="total-courses">0</span>
+                            <span class="overview-label">إجمالي الدورات</span>
+                        </div>
+                        </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="manage-courses">
+                <div class="dashboard-card admin-form">
+                    <div class="card-header">
+                        <i class="fas fa-plus-circle card-icon"></i>
+                        <h3>إضافة دورة جديدة</h3>
+                    </div>
+                    <div class="card-content">
+                        <form id="add-course-form">
+                            <div class="form-group">
+                                <label for="course-title">عنوان الدورة</label>
+                                <input type="text" id="course-title" name="course-title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="course-description">وصف الدورة</label>
+                                <textarea id="course-description" name="course-description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="course-price">سعر الدورة (بالجنيه)</label>
+                                <input type="number" id="course-price" name="course-price" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="course-image">رابط صورة الدورة</label>
+                                <input type="text" id="course-image" name="course-image">
+                            </div>
+                            <button type="submit" class="btn btn-primary">إضافة الدورة</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="dashboard-card admin-table">
+                    <div class="card-header">
+                        <i class="fas fa-book-open card-icon"></i>
+                        <h3>الدورات المتاحة</h3>
+                    </div>
+                    <div class="card-content">
+                        <table id="courses-table">
+                            <thead>
+                                <tr>
+                                    <th>صورة</th>
+                                    <th>عنوان الدورة</th>
+                                    <th>الوصف</th>
+                                    <th>السعر</th>
+                                    <th>التحكم</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section" id="manage-students">
+                <div class="dashboard-card admin-table">
+                    <div class="card-header">
+                        <i class="fas fa-users card-icon"></i>
+                        <h3>بيانات الطلاب</h3>
+                    </div>
+                    <div class="card-content">
+                        <table id="students-table">
+                            <thead>
+                                <tr>
+                                    <th>اسم المستخدم</th>
+                                    <th>رقم هاتف الطالب</th>
+                                    <th>رقم هاتف ولي الأمر</th>
+                                    <th>المحافظة</th>
+                                    <th>المرحلة الدراسية</th>
+                                    <th>التحكم</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="dashboard-section" id="add-student">
+                <div class="dashboard-card admin-form">
+                    <div class="card-header">
+                        <i class="fas fa-user-plus card-icon"></i>
+                        <h3>إضافة حساب طالب/ولي أمر</h3>
+                    </div>
+                    <div class="card-content">
+                        <form id="add-user-form">
+                            <div class="form-group">
+                                <label for="new-username">اسم المستخدم</label>
+                                <input type="text" id="new-username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-student-phone">رقم هاتف الطالب</label>
+                                <input type="tel" id="new-student-phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-parent-phone">رقم هاتف ولي الأمر</label>
+                                <input type="tel" id="new-parent-phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="new-password">كلمة المرور</label>
+                                <input type="password" id="new-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="new-role">نوع الحساب</label>
+                                <select id="new-role" required>
+                                    <option value="student">طالب</option>
+                                    <option value="parent">ولي أمر</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">إضافة الحساب</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div id="edit-course-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="card-header">
+                <h3>تعديل بيانات الدورة</h3>
+            </div>
+            <form id="edit-course-form">
+                <input type="hidden" id="edit-course-id">
+                <div class="form-group">
+                    <label for="edit-course-title">عنوان الدورة</label>
+                    <input type="text" id="edit-course-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-course-description">وصف الدورة</label>
+                    <textarea id="edit-course-description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="edit-course-price">سعر الدورة</label>
+                    <input type="number" id="edit-course-price" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-course-image">رابط صورة الدورة</label>
+                    <input type="text" id="edit-course-image">
+                </div>
+                <button type="submit" class="btn btn-primary">حفظ التعديلات</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="edit-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="card-header">
+                <h3>تعديل بيانات الطالب</h3>
+            </div>
+            <form id="edit-student-form">
+                <input type="hidden" id="edit-student-id">
+                <div class="form-group">
+                    <label for="edit-username">اسم المستخدم</label>
+                    <input type="text" id="edit-username" name="edit-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-student-phone">رقم هاتف الطالب</label>
+                    <input type="tel" id="edit-student-phone" name="edit-student-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-parent-phone">رقم هاتف ولي الأمر</label>
+                    <input type="tel" id="edit-parent-phone" name="edit-parent-phone">
+                </div>
+                <div class="form-group">
+                    <label for="edit-governorate">المحافظة</label>
+                    <input type="text" id="edit-governorate" name="edit-governorate">
+                </div>
+                <div class="form-group">
+                    <label for="edit-grade-level">المرحلة الدراسية</label>
+                    <input type="text" id="edit-grade-level" name="edit-grade-level">
+                </div>
+                <button type="submit" class="btn btn-primary">حفظ التعديلات</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="admin-script.js"></script>
+    <script src="theme.js"></script>
+</body>
+</html>
