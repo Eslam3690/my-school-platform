@@ -2,86 +2,52 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الدخول</title>
-    <link rel="stylesheet" href="login-style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="login-page">
-    <ul class="animated-bg-elements">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-
+<body>
     <div class="login-container">
-        <div class="login-header">
-            <img src="logo-platform.png" alt="شعار منصة مدرستي" class="logo-login">
-            <h2>تسجيل الدخول</h2>
-        </div>
+        <h2>تسجيل الدخول</h2>
+        <p>مرحباً بك في منصة مدرستي. الرجاء إدخال بيانات الدخول.</p>
         <form id="login-form">
-            <div class="form-group">
-                <label for="phone"><i class="fas fa-phone-alt"></i> رقم الهاتف</label>
-                <input type="tel" id="phone" name="phone" required>
+            <div class="input-group">
+                <label for="phone">رقم الهاتف:</label>
+                <input type="text" id="phone" name="phone" required>
             </div>
-            <div class="form-group">
-                <label for="password"><i class="fas fa-lock"></i> كلمة المرور</label>
+            <div class="input-group">
+                <label for="password">كلمة المرور:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-login">دخول</button>
+            <button type="submit" class="btn">دخول</button>
         </form>
-        <p class="signup-link">
-            ليس لديك حساب؟ <a href="signup.html">سجل الآن</a>
-        </p>
     </div>
-
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const loginForm = document.getElementById('login-form');
-
-            loginForm.addEventListener('submit', async (event) => {
-                event.preventDefault();
-
-                const phone = document.getElementById('phone').value;
-                const password = document.getElementById('password').value;
-                const loginMessage = document.getElementById('login-message');
-
-                try {
-                    const response = await fetch('http://localhost:3000/api/login', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ phone, password })
-                    });
-
-                    const user = await response.json();
-
-                    if (response.ok) {
-                        localStorage.setItem('currentUser', JSON.stringify(user.user));
-                        alert('✅ تم تسجيل الدخول بنجاح!');
-
-                        if (user.user.role === 'admin') {
-                            window.location.href = 'admin-dashboard.html';
-                        } else {
-                            window.location.href = 'dashboard.html';
-                        }
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            try {
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone, password })
+                });
+                const result = await response.json();
+                if (response.ok) {
+                    if (result.user.role === 'admin') {
+                        window.location.href = '/admin-dashboard.html';
                     } else {
-                        alert('❌ ' + user.error);
+                        // يمكنك توجيه الطالب لصفحة أخرى
+                        alert('تم تسجيل الدخول بنجاح كطالب.');
+                        // window.location.href = '/student-dashboard.html'; 
                     }
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('❌ حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.');
+                } else {
+                    alert('خطأ في الدخول: ' + result.error);
                 }
-            });
+            } catch (error) {
+                alert('فشل الاتصال بالسيرفر.');
+                console.error('Error:', error);
+            }
         });
     </script>
 </body>
