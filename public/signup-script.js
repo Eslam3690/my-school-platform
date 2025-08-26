@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirm-password').value;
 
-        // تحقق من تطابق كلمتي المرور
         if (password !== confirmPassword) {
             alert('❌ كلمة المرور وتأكيدها غير متطابقين. يرجى المحاولة مرة أخرى.');
             return;
@@ -20,10 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
             governorate: document.getElementById('governorate').value,
             grade_level: document.getElementById('grade-level').value,
             password: password,
-            role: 'student' // تحديد الدور كـ "طالب" افتراضياً
+            role: 'student'
         };
 
         try {
+            /*
             const response = await fetch('http://localhost:3000/api/signup', {
                 method: 'POST',
                 headers: {
@@ -33,14 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const data = await response.json();
-
+            
             if (response.ok) {
                 alert('✅ ' + data.message);
-                // إعادة توجيه المستخدم لصفحة تسجيل الدخول بعد النجاح
                 window.location.href = 'loginn.html';
             } else {
                 alert('❌ ' + data.error);
             }
+            */
+            alert('✅ تم ملء البيانات بنجاح، ولكن الاتصال بالسيرفر غير مفعل حالياً.');
+
         } catch (error) {
             console.error('Error:', error);
             alert('❌ حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.');

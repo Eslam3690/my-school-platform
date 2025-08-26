@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
-    
+
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
@@ -8,31 +8,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = document.getElementById('password').value;
 
         try {
-            const response = await fetch('http://localhost:3000/api/login', {
+            /*
+            const response = await fetch('https://web-production-cbd3.up.railway.app/api/login', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ phone, password }),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone, password })
             });
 
-            const data = await response.json();
+            const result = await response.json();
 
             if (response.ok) {
-                alert('✅ ' + data.message);
-                console.log('Login successful:', data);
-                
-                // تخزين بيانات المستخدم في الذاكرة المحلية (Local Storage)
-                localStorage.setItem('currentUser', JSON.stringify(data.user));
-
-                // توجيه المستخدم لصفحة لوحة تحكم الطالب
-                window.location.href = 'dashboard.html'; 
+                if (result.user.role === 'admin') {
+                    window.location.href = '/admin-dashboard.html';
+                } else {
+                    alert('تم تسجيل الدخول بنجاح كطالب.');
+                    // window.location.href = '/dashboard.html';
+                }
             } else {
-                alert('❌ خطأ: ' + data.error);
-                console.error('Login failed:', data.error);
+                alert('خطأ في الدخول: ' + result.error);
             }
+            */
+            alert('تم النقر على زر الدخول. الاتصال بالسيرفر معطل حالياً.');
         } catch (error) {
-            console.error('Error during login:', error);
+            console.error('Error:', error);
             alert('❌ حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.');
         }
     });

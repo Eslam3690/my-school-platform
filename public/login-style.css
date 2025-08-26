@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
 
+/* Custom properties for a modern, sleek design */
 :root {
     --primary-color: #3498db;
+    --primary-hover: #2980b9;
     --secondary-color: #2c3e50;
-    --background-color: #f4f7f9;
+    --background-color-start: #1c3144;
+    --background-color-end: #081a28;
     --text-color: #333;
     --card-bg-color: #ffffff;
+    --text-color-light: #e0e0e0;
     --shadow-light: rgba(0, 0, 0, 0.1);
     --shadow-medium: rgba(0, 0, 0, 0.2);
 }
@@ -13,7 +17,7 @@
 body {
     font-family: 'Tajawal', sans-serif;
     direction: rtl;
-    background: linear-gradient(135deg, #1c3144 0%, #081a28 100%);
+    background: linear-gradient(135deg, var(--background-color-start) 0%, var(--background-color-end) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +31,7 @@ body {
     padding: 2.5rem;
     border-radius: 15px;
     box-shadow: 0 10px 30px var(--shadow-medium);
-    width: 100%;
+    width: 90%; /* Use percentage for flexibility */
     max-width: 400px;
     text-align: center;
     transform: translateY(0);
@@ -96,18 +100,36 @@ p {
 }
 
 .btn:hover {
-    background-color: #2980b9;
+    background-color: var(--primary-hover);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
 }
 
-/* Responsive Design */
+/* --- Responsive Design --- */
 @media (max-width: 500px) {
+    body {
+        /* This ensures the background color covers the entire screen on mobile */
+        background: var(--background-color-start);
+    }
     .login-container {
-        padding: 2rem;
-        border-radius: 0;
+        padding: 1.5rem; /* Reduced padding for smaller screens */
+        border-radius: 0; /* Full-width on mobile */
+        box-shadow: none; /* No shadow on mobile for a cleaner look */
     }
     h2 {
-        font-size: 1.8rem;
+        font-size: 1.5rem; /* Smaller font size for a better fit */
+    }
+    p {
+        font-size: 0.9rem; /* Smaller paragraph text */
+        margin-bottom: 1.5rem;
+    }
+    .input-group label {
+        font-size: 0.9rem;
+    }
+    .input-group input {
+        padding: 10px; /* Reduced input padding */
+    }
+    .btn {
+        font-size: 1rem; /* Smaller button font size */
     }
 }

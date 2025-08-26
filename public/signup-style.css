@@ -260,3 +260,34 @@ body {
     background-color: var(--card-background);
     color: var(--secondary-text-color);
 }
+
+/* --- Responsive Design --- */
+/* تنسيقات للهواتف (عرض الشاشة 600px وأقل) */
+@media (max-width: 600px) {
+    .main-header {
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 15px;
+    }
+    .header-actions {
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    .main-nav {
+        /* يمكن هنا إضافة قائمة للهاتف إذا كنت تريد */
+        display: none; 
+    }
+    .form-container {
+        padding: 25px;
+    }
+    .form-header h2 {
+        font-size: 24px;
+    }
+    .input-group input {
+        padding: 10px;
+    }
+    .btn {
+        font-size: 14px;
+    }
+}
